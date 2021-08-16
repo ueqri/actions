@@ -9,8 +9,11 @@ import (
 )
 
 type Runner struct {
-	Tasks    []task.Task
-	Balancer loadbalancer.Balancer
+	Tasks        []task.Task
+	Balancer     loadbalancer.Balancer
+	enableTimer  bool
+	enableMetric bool
+	timer        timer
 }
 
 func (r *Runner) Run() {
@@ -23,7 +26,9 @@ func (r *Runner) Run() {
 		wg.Add(1)
 		go func(task task.Task) {
 			defer wg.Done()
+
 			task.StartTask()
+
 			log.Println(task.TaskName(), "finished!")
 		}(v)
 	}

@@ -4,54 +4,37 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"os/exec"
 	"runtime"
+	"strings"
 )
 
-func ExecuteCommand(dir string, command string) (string, error) {
+func ExecuteCommand(dir string, command string) string {
 	var cmd *exec.Cmd
-	if runtime.GOOS == "windows" {
-		fmt.Println("=== Command running in Windows ===")
-		cmd = exec.Command("cmd", "/k")
-	} else if runtime.GOOS == "darwin" {
-		fmt.Println("=== Command running in macos ===")
-		cmd = exec.Command("/bin/bash")
-	} else {
-		fmt.Println("=== Command running in Linux ===")
-		cmd = exec.Command("/bin/sh")
-	}
 
-	in := bytes.NewBuffer(nil)
-
-	var out bytes.Buffer
+	var stdout bytes.Buffer
 	var stderr bytes.Buffer
 
-	cmd.Stdin = in       // Binding Input
-	cmd.Stdout = &out    // Binding Output
-	cmd.Stderr = &stderr // Binding Error Output
+	if runtime.GOOS == "windows" {
+		cmd = exec.Command("cmd", "/k", command)
+	} else if runtime.GOOS == "darwin" || runtime.GOOS == "linux" {
+		cmd = exec.Command("/bin/sh", "-c", command)
+	}
+
 	cmd.Dir = dir
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
 
-	go func() {
-		// Write your multiline commands, use `\n` represent a new line
-		in.WriteString(command)
-	}()
-	log.Println(cmd.String())
-	err := cmd.Start()
+	err := cmd.Run()
 
+	// fmt.Println("stdout:", stdout.String())
 	if err != nil {
-		return "Command start with error:" + err.Error() + ": " +
-			stderr.String(), err
+		fmt.Println("stderr:", stderr.String())
+		panic(err)
 	}
 
-	err = cmd.Wait()
-	if err != nil {
-		return "Command finished with error: " + err.Error() + ": " +
-			stderr.String(), err
-	}
-
-	return out.String(), nil
+	return strings.TrimSpace(stdout.String())
 }
 
 func CheckArtifactsExist(file string) bool {

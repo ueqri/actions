@@ -14,7 +14,8 @@ func (b *BasicTask) TaskName() string {
 }
 
 func (b *BasicTask) StartTask() {
-	b.outputMessage, _ = task.ExecuteCommand(b.Path, "go build && "+b.Cmd)
+	b.outputMessage = task.ExecuteCommand(b.Path, "go build && "+b.Cmd)
+	// fmt.Println(b.outputMessage)
 }
 
 func (b *BasicTask) FinishTask() {
