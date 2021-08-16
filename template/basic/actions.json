@@ -1,0 +1,182 @@
+[
+  {
+    "name": "aes",
+    "path": "samples/aes",
+    "cmd": "./aes -timing -report-all -verify",
+    "export": "samples/aes/metrics.csv"
+  },
+  {
+    "name": "bfs",
+    "path": "samples/bfs",
+    "cmd": "./bfs -timing -report-all -verify",
+    "export": "samples/bfs/metrics.csv"
+  },
+  {
+    "name": "bitonicsort",
+    "path": "samples/bitonicsort",
+    "cmd": "./bitonicsort -timing -report-all -verify",
+    "export": "samples/bitonicsort/metrics.csv"
+  },
+  {
+    "name": "concurrentworkload",
+    "path": "samples/concurrentworkload",
+    "cmd": "./concurrentworkload -timing -report-all -verify",
+    "export": "samples/concurrentworkload/metrics.csv"
+  },
+  {
+    "name": "fastwalshtransform",
+    "path": "samples/fastwalshtransform",
+    "cmd": "./fastwalshtransform -timing -report-all -verify",
+    "export": "samples/fastwalshtransform/metrics.csv"
+  },
+  {
+    "name": "fir",
+    "path": "samples/fir",
+    "cmd": "./fir -timing -report-all -verify",
+    "export": "samples/fir/metrics.csv"
+  },
+  {
+    "name": "im2col",
+    "path": "samples/im2col",
+    "cmd": "./im2col -timing -report-all -verify",
+    "export": "samples/im2col/metrics.csv"
+  },
+  {
+    "name": "lenet",
+    "path": "samples/lenet",
+    "cmd": "./lenet -timing -report-all -verify",
+    "export": "samples/lenet/metrics.csv"
+  },
+  {
+    "name": "matrixtranspose",
+    "path": "samples/matrixtranspose",
+    "cmd": "./matrixtranspose -timing -report-all -verify",
+    "export": "samples/matrixtranspose/metrics.csv"
+  },
+  {
+    "name": "minerva",
+    "path": "samples/minerva",
+    "cmd": "./minerva -timing -report-all -verify",
+    "export": "samples/minerva/metrics.csv"
+  },
+  {
+    "name": "nw",
+    "path": "samples/nw",
+    "cmd": "./nw -timing -report-all -verify",
+    "export": "samples/nw/metrics.csv"
+  },
+  {
+    "name": "relu",
+    "path": "samples/relu",
+    "cmd": "./relu -timing -report-all -verify",
+    "export": "samples/relu/metrics.csv"
+  },
+  {
+    "name": "server",
+    "path": "samples/server",
+    "cmd": "./server -timing -report-all -verify",
+    "export": "samples/server/metrics.csv"
+  },
+  {
+    "name": "spmv",
+    "path": "samples/spmv",
+    "cmd": "./spmv -timing -report-all -verify",
+    "export": "samples/spmv/metrics.csv"
+  },
+  {
+    "name": "vgg16",
+    "path": "samples/vgg16",
+    "cmd": "./vgg16 -timing -report-all -verify",
+    "export": "samples/vgg16/metrics.csv"
+  },
+  {
+    "name": "atax",
+    "path": "samples/atax",
+    "cmd": "./atax -timing -report-all -verify",
+    "export": "samples/atax/metrics.csv"
+  },
+  {
+    "name": "bicg",
+    "path": "samples/bicg",
+    "cmd": "./bicg -timing -report-all -verify",
+    "export": "samples/bicg/metrics.csv"
+  },
+  {
+    "name": "concurrentkernel",
+    "path": "samples/concurrentkernel",
+    "cmd": "./concurrentkernel -timing -report-all -verify",
+    "export": "samples/concurrentkernel/metrics.csv"
+  },
+  {
+    "name": "conv2d",
+    "path": "samples/conv2d",
+    "cmd": "./conv2d -timing -report-all -verify",
+    "export": "samples/conv2d/metrics.csv"
+  },
+  {
+    "name": "fft",
+    "path": "samples/fft",
+    "cmd": "./fft -timing -report-all -verify",
+    "export": "samples/fft/metrics.csv"
+  },
+  {
+    "name": "floydwarshall",
+    "path": "samples/floydwarshall",
+    "cmd": "./floydwarshall -timing -report-all -verify",
+    "export": "samples/floydwarshall/metrics.csv"
+  },
+  {
+    "name": "kmeans",
+    "path": "samples/kmeans",
+    "cmd": "./kmeans -timing -report-all -verify",
+    "export": "samples/kmeans/metrics.csv"
+  },
+  {
+    "name": "matrixmultiplication",
+    "path": "samples/matrixmultiplication",
+    "cmd": "./matrixmultiplication -timing -report-all -verify",
+    "export": "samples/matrixmultiplication/metrics.csv"
+  },
+  {
+    "name": "memcopy",
+    "path": "samples/memcopy",
+    "cmd": "./memcopy -timing -report-all -verify",
+    "export": "samples/memcopy/metrics.csv"
+  },
+  {
+    "name": "nbody",
+    "path": "samples/nbody",
+    "cmd": "./nbody -timing -report-all -verify",
+    "export": "samples/nbody/metrics.csv"
+  },
+  {
+    "name": "pagerank",
+    "path": "samples/pagerank",
+    "cmd": "./pagerank -timing -report-all -verify",
+    "export": "samples/pagerank/metrics.csv"
+  },
+  {
+    "name": "runner",
+    "path": "samples/runner",
+    "cmd": "./runner -timing -report-all -verify",
+    "export": "samples/runner/metrics.csv"
+  },
+  {
+    "name": "simpleconvolution",
+    "path": "samples/simpleconvolution",
+    "cmd": "./simpleconvolution -timing -report-all -verify",
+    "export": "samples/simpleconvolution/metrics.csv"
+  },
+  {
+    "name": "stencil2d",
+    "path": "samples/stencil2d",
+    "cmd": "./stencil2d -timing -report-all -verify",
+    "export": "samples/stencil2d/metrics.csv"
+  },
+  {
+    "name": "xor",
+    "path": "samples/xor",
+    "cmd": "./xor -timing -report-all -verify",
+    "export": "samples/xor/metrics.csv"
+  }
+]

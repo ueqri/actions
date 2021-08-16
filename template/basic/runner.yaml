@@ -1,0 +1,13 @@
+template:
+  - fir
+  - aes
+  - matrixmultiplication
+  - fft
+  - floydwarshall
+
+override:
+  fir: "./fir -length 100000 -timing -report-all -verify"
+  floydwarshall: "./floydwarshall -node=64 -timing -report-all -verify"
+
+runner:
+  using: 2
