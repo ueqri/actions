@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"os"
+	"path/filepath"
 
 	"github.com/ueqri/actions/collector"
 	"github.com/ueqri/actions/loadbalancer"
@@ -22,13 +24,13 @@ func main() {
 		WithNumberOfRanks(numRanks).
 		WithRankID(*rankPtr)
 
+	dir, _ := os.Getwd()
 	c := new(collector.Collector)
-	c.Sender = &collector.LocalSender{
-		Dst:      "",
-		LoginSSH: "",
+	c.Sender = &collector.SingleSender{
+		Dst: filepath.Join(dir, ".collect"),
 	}
-	c.Receiver = &collector.LocalReceiver{
-		Dir: "",
+	c.Receiver = &collector.SingleReceiver{
+		Dir: filepath.Join(dir, ".collect"),
 	}
 
 	runner := new(runner.Runner)

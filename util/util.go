@@ -1,6 +1,7 @@
 package util
 
 import (
+	"bufio"
 	"bytes"
 	"fmt"
 	"io"
@@ -8,6 +9,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"os/user"
 	"path"
 	"path/filepath"
 	"runtime"
@@ -98,11 +100,12 @@ func WriteStringToFile(data, file string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	writer := bufio.NewWriter(f)
 	defer f.Close()
 
-	if _, err := f.WriteString(data); err != nil {
-		log.Fatal(err)
-	}
+	fmt.Fprintln(writer, data)
+	writer.Flush()
 }
 
 func RemoveFile(file string) {
@@ -131,4 +134,16 @@ func FindFiles(root, extension string) []string {
 		return nil
 	})
 	return a
+}
+
+func ExpandTilde(path string) string {
+	if len(path) == 0 || path[0] != '~' {
+		return path
+	}
+
+	usr, err := user.Current()
+	if err != nil {
+		panic(err)
+	}
+	return filepath.Join(usr.HomeDir, path[1:])
 }
