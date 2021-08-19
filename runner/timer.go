@@ -2,35 +2,20 @@ package runner
 
 import "time"
 
-type timer struct {
-	start  map[string]time.Time
-	finish map[string]time.Time
+type Timer struct {
+	start  time.Time
+	finish time.Time
 }
 
-func (t *timer) Register(name string) {
-	_, ok := t.start[name]
-	if ok {
-		panic("duplicated registration for " + name + " timer")
-	} else {
-		t.start[name] = time.Now()
-	}
+func (t *Timer) Register(name string) {
+	t.start = time.Now()
+
 }
 
-func (t *timer) Record(name string) {
-	_, ok := t.finish[name]
-	if ok {
-		panic("duplicated record for " + name + " timer")
-	} else {
-		t.finish[name] = time.Now()
-	}
+func (t *Timer) Record(name string) {
+	t.finish = time.Now()
 }
 
-func (t *timer) Elapsed(name string) time.Duration {
-	if _, ok := t.start[name]; ok {
-		panic("no registration for " + name + " timer")
-	}
-	if _, ok := t.finish[name]; ok {
-		panic("no record for " + name + " timer")
-	}
-	return t.finish[name].Sub(t.start[name])
+func (t *Timer) Elapsed(name string) time.Duration {
+	return t.finish.Sub(t.start)
 }

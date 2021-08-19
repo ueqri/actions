@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ueqri/actions/task"
+	"github.com/ueqri/actions/util"
 )
 
 type BasicTask struct {
@@ -14,12 +14,12 @@ func (b *BasicTask) TaskName() string {
 }
 
 func (b *BasicTask) StartTask() {
-	b.outputMessage = task.ExecuteCommand(b.Path, "go build && "+b.Cmd)
+	b.outputMessage = util.ExecuteCommand(b.Path, "go build && "+b.Cmd)
 	// fmt.Println(b.outputMessage)
 }
 
 func (b *BasicTask) FinishTask() {
-	if !task.CheckArtifactsExist(b.Export) {
+	if !util.CheckArtifactsExist(b.Export) {
 		panic("The artifact to export is not existed")
 	}
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 
+	"github.com/ueqri/actions/collector"
 	"github.com/ueqri/actions/loadbalancer"
 	"github.com/ueqri/actions/runner"
 )
@@ -21,10 +22,25 @@ func main() {
 		WithNumberOfRanks(numRanks).
 		WithRankID(*rankPtr)
 
+	c := new(collector.Collector)
+	c.Sender = &collector.LocalSender{
+		Dst:      "",
+		LoginSSH: "",
+	}
+	c.Receiver = &collector.LocalReceiver{
+		Dir: "",
+	}
+
 	runner := new(runner.Runner)
 	runner.Balancer = &balancer
+	runner.Collector = c
 	for _, t := range alltasks {
 		runner.Tasks = append(runner.Tasks, t)
 	}
+
 	runner.Run()
+
+	if *rankPtr == 0 {
+		c.Collect()
+	}
 }
