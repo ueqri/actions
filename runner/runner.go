@@ -1,7 +1,6 @@
 package runner
 
 import (
-	"fmt"
 	"log"
 	"sync"
 	"sync/atomic"
@@ -43,7 +42,7 @@ func (r *Runner) Run() {
 
 	log.Println("Running completes!")
 	if r.Collector != nil {
-		fmt.Println("Report to collector...")
+		log.Println("Report to collector...")
 		r.Collector.Run(localTasks)
 	}
 }

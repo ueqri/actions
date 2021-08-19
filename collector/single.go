@@ -18,15 +18,18 @@ func (s *SingleSender) Messages(name string, msgs []string) {
 	}
 	file := name + ".log"
 	util.WriteStringToFile(data, file)
-	util.CopyFile(file, s.Dst)
+	util.CopyFile(file, filepath.Join(s.Dst, file))
+	util.RemoveFile(file)
 }
 
 func (s *SingleSender) Artifacts(name string, arts []string) {
 	for _, art := range arts {
-		dir, origin := filepath.Split(art)
-		rename := filepath.Join(dir, fmt.Sprintf("%s_%s", name, origin))
-		util.RenameFile(origin, rename)
-		util.CopyFile(rename, s.Dst)
+		dir, originFile := filepath.Split(art)
+		renameFile := fmt.Sprintf("%s_%s", name, originFile)
+		renamePath := filepath.Join(dir, renameFile)
+		util.RenameFile(art, renamePath)
+		util.CopyFile(renamePath, filepath.Join(s.Dst, renameFile))
+		util.RemoveFile(renamePath)
 	}
 }
 
