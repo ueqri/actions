@@ -16,7 +16,7 @@ func main() {
 	templatePrt := flag.String("template", "", "Path of the actions template")
 	flag.Parse()
 
-	alltasks, numRanks := ParserConfig(*configPrt, *templatePrt)
+	alltasks, numRanks, name := ParserConfig(*configPrt, *templatePrt)
 
 	// fmt.Printf("%v\n%#v", numRanks, alltasks)
 
@@ -34,6 +34,7 @@ func main() {
 	}
 
 	runner := new(runner.Runner)
+	runner.PrefixName = name
 	runner.Balancer = &balancer
 	runner.Collector = c
 	for _, t := range alltasks {

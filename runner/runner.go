@@ -11,9 +11,10 @@ import (
 )
 
 type Runner struct {
-	Tasks     []task.Task
-	Balancer  loadbalancer.Balancer
-	Collector *collector.Collector
+	PrefixName string
+	Tasks      []task.Task
+	Balancer   loadbalancer.Balancer
+	Collector  *collector.Collector
 }
 
 func (r *Runner) Run() {

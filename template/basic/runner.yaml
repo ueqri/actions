@@ -1,13 +1,44 @@
 template:
-  - fir
-  - aes
-  - matrixmultiplication
+  # Heteromark (4)
+- fir
+- aes
+- kmeans
+- pagerank
+  # AMD APP SDK (7)
+- floydwarshall
+- matrixmultiplication
+- matrixtranspose
+- nbody
+- simpleconvolution
+  ## ML package needed
+- bitonicsort
+  - fastwalshtransform
+  # DNN (7) all can't run, besides xor
+- relu
+- conv2d
+- im2col
+  - lenet
+  - minerva
+  - vgg16
+  # Rodinia (1)
+  - nw
+  # SHOC (4)
+- bfs
   - fft
-  - floydwarshall
+  - spmv
+  - stencil2d
+  # Ploy Bench (2) too long run time
+  - atax
+  - bicg
+  # Misc (3)
+  # - concurrentworkload
+  - concurrentkernel
+- memcopy
 
 override:
-  fir: "./fir -length 100000 -timing -report-all -verify"
+  # fir: "./fir -length 100000 -timing -report-all -verify"
   floydwarshall: "./floydwarshall -node=64 -timing -report-all -verify"
 
-runner:
-  using: 2
+global:
+  name: "akkalat-32by32"
+  runner: 2

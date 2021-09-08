@@ -8,14 +8,15 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-type Runner struct {
-	Using int `yaml:"using"`
+type Global struct {
+	Name   string `yaml:"name"`
+	Runner int    `yaml:"runner"`
 }
 
 type YAMLFile struct {
-	Templates []string          `yaml:"template"`
-	Overrides map[string]string `yaml:"override,omitempty"`
-	Runner    Runner            `yaml:"runner"`
+	Templates    []string          `yaml:"template"`
+	Overrides    map[string]string `yaml:"override,omitempty"`
+	GlobalConfig Global            `yaml:"global"`
 }
 
 type Benchmark struct {
@@ -60,11 +61,16 @@ func ReadJsonFile(path string) JSONFile {
 	return jsonFile
 }
 
-func ParserConfig(cfg string, tmpl string) (tasks []*BasicTask, numRanks int) {
+func ParserConfig(cfg string, tmpl string) (
+	tasks []*BasicTask,
+	numRanks int,
+	actionsName string,
+) {
 	yamlFile := ReadYAMLFile(cfg)
 	jsonFile := ReadJsonFile(tmpl)
 
-	numRanks = yamlFile.Runner.Using
+	numRanks = yamlFile.GlobalConfig.Runner
+	actionsName = yamlFile.GlobalConfig.Name
 
 	for _, v := range yamlFile.Templates {
 		var task BasicTask
