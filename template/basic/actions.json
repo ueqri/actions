@@ -32,7 +32,7 @@
   {
     "name": "matrixmultiplication",
     "path": "samples/matrixmultiplication",
-    "cmd": "./matrixmultiplication -x=128 -y=128 -z=128 -timing -verify",
+    "cmd": "./matrixmultiplication -x=512 -y=512 -z=512 -timing -verify",
     "export": "samples/matrixmultiplication/metrics.csv"
   },
   {
@@ -44,7 +44,7 @@
   {
     "name": "nbody",
     "path": "samples/nbody",
-    "cmd": "./nbody -particles=40960 -timing -verify",
+    "cmd": "./nbody -particles=81920000000 -timing -verify",
     "export": "samples/nbody/metrics.csv"
   },
   {
@@ -86,19 +86,19 @@
   {
     "name": "lenet",
     "path": "samples/lenet",
-    "cmd": "./lenet -epoch=1 -max-batch-per-epoch=2 -timing -verify",
+    "cmd": "./lenet -epoch=1 -max-batch-per-epoch=2 -timing",
     "export": "samples/lenet/metrics.csv"
   },
   {
     "name": "minerva",
     "path": "samples/minerva",
-    "cmd": "./minerva -epoch=1 -max-batch-per-epoch=2 -timing -verify",
+    "cmd": "./minerva -epoch=1 -max-batch-per-epoch=2 -timing",
     "export": "samples/minerva/metrics.csv"
   },
   {
     "name": "vgg16",
     "path": "samples/vgg16",
-    "cmd": "./vgg16 -epoch=1 -max-batch-per-epoch=2 -timing -verify",
+    "cmd": "./vgg16 -epoch=1 -max-batch-per-epoch=2 -timing",
     "export": "samples/vgg16/metrics.csv"
   },
   {
@@ -140,13 +140,13 @@
   {
     "name": "atax",
     "path": "samples/atax",
-    "cmd": "./atax -x=8192 -y=8192 -timing -verify",
+    "cmd": "./atax -x=4096 -y=4096 -timing -verify",
     "export": "samples/atax/metrics.csv"
   },
   {
     "name": "bicg",
     "path": "samples/bicg",
-    "cmd": "./bicg -timing -verify",
+    "cmd": "./bicg -x=4096 -y=4096 -timing -verify",
     "export": "samples/bicg/metrics.csv"
   },
   {

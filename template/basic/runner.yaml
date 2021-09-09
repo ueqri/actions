@@ -1,29 +1,29 @@
 template:
   # Heteromark (4)
-- fir
-- aes
-- kmeans
-- pagerank
+  - fir
+  - aes
+  - kmeans
+  - pagerank
   # AMD APP SDK (7)
-- floydwarshall
-- matrixmultiplication
-- matrixtranspose
-- nbody
-- simpleconvolution
+  - floydwarshall
+  - matrixmultiplication
+  - matrixtranspose
+  - nbody
+  - simpleconvolution
   ## ML package needed
-- bitonicsort
+  - bitonicsort
   - fastwalshtransform
   # DNN (7) all can't run, besides xor
-- relu
-- conv2d
-- im2col
+  - relu
+  - conv2d
+  - im2col
   - lenet
   - minerva
   - vgg16
   # Rodinia (1)
   - nw
   # SHOC (4)
-- bfs
+  - bfs
   - fft
   - spmv
   - stencil2d
@@ -33,7 +33,7 @@ template:
   # Misc (3)
   # - concurrentworkload
   - concurrentkernel
-- memcopy
+  - memcopy
 
 override:
   # fir: "./fir -length 100000 -timing -report-all -verify"
